@@ -1,0 +1,268 @@
+.notice-container {
+    position: fixed;
+    right: 40px;  /* 메인 컨테이너와 동일한 값 */
+    bottom: 40px;
+    width: 400px;
+    min-height: 70vh;
+    max-height: 70vh;  /* 최대 높이 제한 유지 */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border-radius: 30px;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 900;
+    transition: all 0.3s ease;
+}
+
+/* 스크롤바 기본 스타일 */
+.notice-container::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+}
+
+/* 스크롤바 트랙 */
+.notice-container::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 20px 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);  /* 트랙도 동일한 모션 곡선 적용 */
+}
+
+/* 스크롤바 썸 기본 상태 */
+.notice-container::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);  /* 부드러운 모션 곡선으로 변경 */
+}
+
+/* 스크롤바 트랙 hover 시 썸 표시 - 선택자 변경 및 개선 */
+.notice-container::-webkit-scrollbar-track:hover ~ ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* 스크롤바 썸 직접 hover 시 */
+.notice-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);  /* hover 시에는 더 빠른 반응 */
+}
+
+/* 테이블 배경 투명하게 유지 */
+.notice-table {
+    width: 100%;
+    border-collapse: separate;  /* collapse에서 separate로 변경 */
+    border-spacing: 0 8px;         /* 셀 간격 제거 */
+    margin-top: 0;  /* 상단 여백 제거 */
+    background: transparent;
+}
+
+/* 날짜와 제목을 한 줄에 표시하도록 수정 */
+.notice-content {
+    display: flex;
+    align-items: flex-start;  /* 상단 정렬로 변경 */
+    gap: 15px;
+    height: 100%;
+    width: 100%;  /* 전체 너비 사용 */
+}
+
+/* 날짜 셀 스타일 */
+.notice-date {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);  /* 흰색으로 변경 */
+    font-size: 0.9em;
+    white-space: nowrap;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;  /* 미디엄 weight 추가 */
+    min-width: 45px;  /* 날짜 영역 최소 너비 설정 */
+    padding-top: 2px;  /* 제목 텍스트와 같은 높이에서 시작하도록 조정 */
+    line-height: 1.4;  /* 제목과 동일한 line-height 적용 */
+}
+
+/* 제목 셀 스타일 */
+.notice-title-cell {
+    padding: 12px 15px;
+}
+
+.notice-title-text {
+    flex: 1;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  /* 한 줄로 강제 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;
+    font-size: 0.95em;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+    max-width: 350px;  /* 최대 너비 제한 */
+    display: inline-block;  /* 너비 제한을 위해 필요 */
+}
+
+.notice-writer {
+    color: rgba(255, 255, 255, 0.7);  /* 약간 투명한 흰색 */
+    font-size: 0.85em;
+    white-space: nowrap;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 700;  /* 레귤러 weight 설정 */
+}
+
+/* 테이블 헤더 숨기기 */
+.notice-table thead {
+    display: none;
+}
+
+/* 테이블 헤더 스타일 개선 */
+.notice-table th {
+    padding: 12px 15px;
+    background-color: rgba(0, 0, 0, 0.03);
+    font-weight: 700;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);  /* 흰색으로 변경 */
+    border-radius: 8px;        /* 모서리 둥글게 */
+}
+
+/* 테이블 셀 간격 조정 */
+.notice-table td {
+    padding: 0 15px;  /* 좌우 패딩만 유지 */
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    height: 100%;  /* 부모 높이에 맞춤 */
+    display: flex;
+    align-items: center;
+    /* border-bottom 제거 (기존 직선 구분선 제거) */
+}
+
+/* 테이블 행 스타일 수정 */
+.notice-table tr {
+    position: relative;
+    margin-bottom: 8px;
+    height: 45px;
+    display: block;
+    cursor: pointer;  /* 포인터 커서 추가 */
+    transition: transform 0.2s ease, background-color 0.2s ease;  /* 부드러운 전환 효과 */
+    border-radius: 8px;  /* 기본 상태에서도 둥근 모서리 적용 */
+}
+
+/* hover 효과 개선 */
+.notice-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+    border-radius: 8px;  /* 행 자체에 둥글은 모서리 추가 */
+}
+
+.notice-table tr:active {
+    transform: translateX(3px);  /* 클릭 시 약간 덜 이동 */
+}
+
+/* 테이블 행 간격과 구분선 스타일 추가 */
+.notice-table tr {
+    position: relative;
+    margin-bottom: 8px;  /* 행 간 간격 */
+}
+
+.notice-table tr:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 5%;  /* 양쪽 10% 여백 */
+    right: 5%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1px;
+}
+
+/* 공지사항 제목 스타일 */
+.notice-title {
+    color: rgba(255, 255, 255, 0.9);
+    text-align: left;
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 1.3em;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 10px;  /* 구분선 대신 여백으로 간격 조정 */
+}
+
+/* 제목 아래 구분선 제거 */
+.notice-title::after {
+    display: none;  /* 구분선 숨기기 */
+}
+
+/* 행 호버 효과에도 둥글은 모서리 적용 */
+.notice-table tr:hover td {
+    border-radius: 8px;
+}
+
+/* 모바일 화면에서의 너비 조정을 위한 미디어 쿼리 추가 */
+@media screen and (max-width: 480px) {
+    .notice-title-text {
+        max-width: 200px;  /* 모바일에서는 더 작게 제한 */
+    }
+}
+
+/* 헤더 스타일 */
+.notice-header {
+    display: flex;
+    align-items: center;
+    position: relative;  /* 자식 요소의 절대 위치 기준점 */
+}
+
+/* 새로고침 버튼 스타일 */
+.refresh-btn {
+    padding: 4px 8px;
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: transparent;
+    border: none;  /* 테두리 제거 */
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+    position: absolute;  /* 절대 위치 설정 */
+    left: 360px;  /* 위치 조정 */
+    top: 14px;    /* 위치 조정 */
+}
+
+.refresh-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.refresh-btn:active {
+    transform: scale(0.95);
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* 마지막 업데이트 시간 스타일 */
+.last-update {
+    font-size: 0.7em;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    left: 250px;  /* 위치 조정 */
+    top: 21px;    /* 위치 조정 */
+    transition: all 0.3s ease;
+}
+
+.last-update.highlight {
+    animation: jumpEffect 0.4s ease-in-out;
+}
+
+@keyframes jumpEffect {
+    0% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(-2px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+}

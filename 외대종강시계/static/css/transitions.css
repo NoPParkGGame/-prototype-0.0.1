@@ -1,0 +1,14 @@
+/* 테마 전환 효과 */
+body,
+.container,
+.timer,
+.period-type,
+.current-time-label,
+#currentTime {
+    transition: all 0.5s ease;
+}
+
+/* 페이드 효과 */
+body::after {
+    transition: background-color 1s ease;
+}

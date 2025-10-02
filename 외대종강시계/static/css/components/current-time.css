@@ -1,0 +1,26 @@
+/* 현재 시간 표시 관련 스타일 */
+.current-time-label {
+    position: fixed;
+    top: 20px;          /* 상단 여백 */
+    left: 30px;         /* 왼쪽 여백 */
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.25em;
+    color: var(--curtime-color);
+    z-index: 1000;      /* 다른 요소들 위에 표시 */
+}
+
+#currentTime {
+    position: fixed;
+    top: 45px;          /* label 아래에 위치 */
+    left: 30px;         /* 왼쪽 여백 */
+    font-weight: 700;
+    font-size: 1.25em;
+    color: var(--curtime-color);
+    z-index: 1000;      /* 다른 요소들 위에 표시 */
+}
+
+.current-time-label, #currentTime {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}

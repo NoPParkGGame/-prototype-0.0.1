@@ -1,0 +1,171 @@
+/* 큰 화면 (1200px 이상)
+   - 더 큰 폰트 사이즈와 여백
+   - 넓은 컨테이너 너비
+*/
+@media screen and (min-width: 1200px) {
+    /* 시간 표시 영역 */
+    .current-time-label {
+        top: 20px;
+        left: 30px;
+        font-size: 1.4em;
+    }
+
+    #currentTime {
+        top: 35px;
+        left: 30px;
+        font-size: 1.4em;
+    }
+
+    /* 테마 버튼 영역 */
+    .theme-buttons {
+        top: 30px;
+        right: 40px;
+        gap: 15px;
+    }
+
+    .theme-btn {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    /* 공지사항 컨테이너 */
+    .notice-container {
+        width: 450px;
+        left: 30px;
+        padding: 20px;
+        bottom: 40px;
+    }
+
+    /* 공지사항 내부 요소 */
+    .notice-title {
+        font-size: 1.4em;
+    }
+
+    .notice-table th,
+    .notice-table td {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+}
+
+/* 중간 크기 화면 (768px ~ 1200px)
+   - 적절한 중간 크기 유지
+   - 여백 조정
+*/
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .notice-container {
+        width: 420px;
+        left: 30px;
+        padding: 18px;
+        bottom: 40px;
+    }
+}
+
+/* 태블릿 크기 (768px 이하)
+   - 축소된 폰트 사이즈
+   - 좁아진 여백
+   - 반응형 전환 애니메이션 추가
+*/
+@media screen and (max-width: 768px) {
+    /* 메인 컨테이너 */
+    .container {
+        padding: 1rem;
+        margin-top: 60px;
+    }
+
+    /* 시간 표시 영역 */
+    .current-time-label {
+        top: 15px;
+        left: 15px;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    #currentTime {
+        top: 40px;
+        left: 15px;
+        font-size: 1.1em;
+        transition: all 0.3s ease;
+    }
+
+    /* 테마 버튼 영역 */
+    .theme-buttons {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .theme-btn {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+
+    /* 공지사항 컨테이너 */
+    .notice-container {
+        width: 400px;
+        left: 15px;
+        padding: 15px;
+        bottom: 40px;
+    }
+
+    /* 공지사항 내부 요소 */
+    .notice-title {
+        font-size: 1.1em;
+    }
+
+    .notice-table th,
+    .notice-table td {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}
+
+/* 모바일 크기 (480px 이하)
+   - 최소화된 크기와 여백
+   - 수직 스택 레이아웃
+   - 축소된 컨테이너 크기
+*/
+@media screen and (max-width: 480px) {
+    /* 타이머 영역 */
+    .timer {
+        font-size: 2em;
+    }
+
+    .period-type {
+        font-size: 2.2em;
+    }
+
+    /* 테마 버튼 영역 */
+    .theme-buttons {
+        top: 10px;
+        right: 10px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .theme-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    /* 공지사항 컨테이너 */
+    .notice-container {
+        position: static;
+        width: 90%;
+        margin: 20px auto;
+        max-height: 50vh;
+        padding: 15px;
+    }
+
+    /* 공지사항 내부 요소 */
+    .notice-title {
+        font-size: 1em;
+    }
+
+    .notice-table th,
+    .notice-table td {
+        padding: 6px;
+        font-size: 0.85em;
+    }
+}

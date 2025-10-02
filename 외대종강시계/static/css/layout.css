@@ -1,0 +1,115 @@
+/* 기본 레이아웃 설정
+   - 전체 페이지의 기본 폰트 및 스타일 정의
+   - 배경을 투명하게 설정하여 배경 이미지 표시 준비
+*/
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    position: relative;
+    background-color: transparent;
+}
+
+/* 배경 이미지 컨테이너 
+   - 전체 화면을 덮는 고정 위치 컨테이너
+   - z-index로 다른 요소들 뒤에 배치
+*/
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+/* 배경 이미지 기본 스타일
+   - 이미지 크기 및 위치 조정
+   - 부드러운 테마 전환을 위한 opacity 트랜지션
+*/
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 2s ease;
+}
+
+/* 기본 테마 배경 */
+.background.default {
+    background-image: url('../images/background_picture.jpg');
+}
+
+/* 다크 테마 배경
+   - 초기에는 투명하게 설정 (opacity: 0)
+   - 다크 모드 활성화 시 opacity가 1로 변경됨
+*/
+.background.dark {
+    background-image: url('../images/night_background.jpg');
+    opacity: 0;
+}
+
+/* 배경 오버레이
+   - CSS 변수로 정의된 배경색 사용
+   - 배경 이미지 위에 반투명 레이어 추가
+*/
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: -1;
+}
+
+/* 메인 컨테이너 스타일
+   - 글래스모피즘 효과 적용
+   - 우측 하단 고정 위치
+   - 크기 조정 및 애니메이션 효과
+*/
+.container {
+    /* 글래스모피즘 효과 */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* 위치 및 크기 */
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    padding: 2rem;
+    border-radius: 30px;
+    
+    /* 변환 및 애니메이션 */
+    transform: scale(0.7);
+    transform-origin: bottom right;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+/* 컨테이너 호버 효과
+   - 블러 효과 강화로 시각적 피드백 제공
+*/
+.container:hover {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* 다크 모드 컨테이너
+   - 노란색 계열의 그림자로 변경
+   - 밝기 감소를 위해 그림자 크기 축소
+*/
+.theme-dark .container {
+    box-shadow: 0 4px 16px 0 rgba(255, 255, 0, 0.1);
+}
+

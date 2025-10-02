@@ -1,0 +1,156 @@
+/* 테마별 색상 변수 정의
+   - 각 테마의 주요 색상 및 투명도 설정
+   - CSS 변수를 통한 동적 색상 관리
+*/
+.theme-default {
+    --bg-color: rgba(0, 0, 0, 0.5);
+    --container-bg: rgba(219, 219, 219, 0.7);
+    --timer-color: #101090;
+    --text-color: #202124;
+    --curtime-color: #ffffff;
+}
+
+.theme-dark {
+    --bg-color: rgba(0, 0, 0, 0.7);
+    --container-bg: rgba(55, 65, 81, 0.8);
+    --timer-color: #6074fa;
+    --text-color: #f3f4f6;
+    --curtime-color: #f3f4f9eb;
+}
+
+/* 기본 레이아웃 설정
+   - 폰트 및 기본 스타일 정의
+   - 중앙 정렬을 위한 flexbox 설정
+*/
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    height: 100vh;
+    position: relative;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 배경 이미지 레이어
+   - 전체 화면 커버
+   - z-index로 레이어 순서 제어
+*/
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../static/background_picture.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+/* 배경 오버레이 레이어
+   - 테마별 배경 투명도 적용
+   - 배경 이미지 위의 컬러 레이어
+*/
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: -1;
+}
+
+/* 메인 컨테이너
+   - 중앙 배치된 주요 콘텐츠 영역
+   - 글래스모피즘 효과 적용
+*/
+.container {
+    text-align: center;
+    background-color: var(--container-bg);
+    padding: 2rem 5rem;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* 타이머 표시
+   - 큰 폰트 사이즈와 굵은 웨이트
+   - 테마별 색상 적용
+*/
+.timer {
+    font-weight: 900;
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: var(--timer-color);
+}
+
+/* 기간 타입 표시
+   - 타이머보다 큰 폰트 사이즈
+   - 테마별 텍스트 색상 적용
+*/
+.period-type {
+    font-weight: 800;
+    font-size: 2.8em;
+    color: var(--text-color);
+}
+
+/* 테마 전환 버튼 영역
+   - 우측 상단 고정 배치
+   - 버튼 간격 조정을 위한 flexbox
+*/
+.theme-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+/* 테마 버튼 스타일
+   - 부드러운 호버 효과
+   - 둥근 모서리와 투명도 전환
+*/
+.theme-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 400;
+    transition: opacity 0.3s;
+}
+
+.theme-btn:hover {
+    opacity: 0.8;
+}
+
+/* 현재 시간 표시 영역
+   - 좌측 상단 고정 배치
+   - 그림자 효과로 가독성 향상
+*/
+.current-time-label, #currentTime {
+    position: fixed;
+    left: 495px;
+    font-family: "Noto Sans KR", sans-serif;
+    color: var(--curtime-color);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+}
+
+.current-time-label {
+    top: 160px;
+    font-weight: 900;
+    font-size: 1.25em;
+}
+
+#currentTime {
+    top: 185px;
+    font-weight: 700;
+    font-size: 1.25em;
+}
