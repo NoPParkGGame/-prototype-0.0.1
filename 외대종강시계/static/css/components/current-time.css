@@ -24,3 +24,8 @@
 .current-time-label, #currentTime {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
+.theme-dark .current-time-label,
+.theme-dark #currentTime {
+    text-shadow: 2px 2px 2px var(--text-shadow-color);
+}

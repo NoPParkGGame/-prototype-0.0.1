@@ -1,0 +1,119 @@
+/* 기본 테마 색상 변수
+   - --bg-color: 배경 오버레이의 투명도 (0.3 = 30% 불투명)
+   - --container-bg: 컨테이너 배경색 (약간 투명한 밝은 회색)
+   - --timer-color: 타이머 텍스트 색상 (진한 파란색)
+   - --text-color: 일반 텍스트 색상 (거의 검은색)
+   - --curtime-color: 현재 시간 표시 색상 (흰색)
+*/
+.theme-default {
+    --bg-color: rgba(0, 0, 0, 0.3);  /* 밝은 테마용 오버레이 */
+    --container-bg: rgba(219, 219, 219, 0.7);
+    --timer-color: #101090;
+    --text-color: #202124;
+    --curtime-color: #ffffff;
+}
+
+/* 다크 테마 색상 변수
+   - --bg-color: 배경 오버레이 완전 투명 (원본 이미지 그대로)
+   - --container-bg: 컨테이너 배경색 (약간 투명한 어두운 회색)
+   - --container-shadow: 컨테이너 그림자 색상 (연한 노란색)
+   - --text-color: 일반 텍스트 색상 (흰색)
+   - --curtime-color: 현재 시간 표시 색상 (흰색)
+*/
+.theme-dark {
+    --bg-color: rgba(0, 0, 0, 0.25);  /* 다크 테마용 오버레이 - 동일한 값 유지 */
+    --container-bg: rgba(55, 65, 81, 0.8);
+    --container-shadow: rgba(255, 255, 0, 0.1);
+    --text-color: #fff;
+    --curtime-color: #ffffff;  /* 현재 시간 색상 추가 */
+    --text-shadow-color: rgba(255, 255, 0, 0.1); /* 다크 모드 텍스트 그림자 색상 */
+}
+
+/* 테마 버튼 컨테이너
+   - position: fixed로 화면에 고정
+   - right: 40px로 오른쪽 여백 설정
+   - top: 20px로 상단 여백 설정
+   - display: flex로 버튼들을 가로로 배치
+   - gap: 10px로 버튼 사이 간격 설정
+   - z-index: 1000으로 다른 요소들 위에 표시
+*/
+.theme-buttons {
+    position: fixed;
+    right: 40px;
+    top: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* 테마 버튼 기본 스타일
+   - padding: 버튼 내부 여백
+   - font-size: 글자 크기 14px
+   - background-color: 약간 투명한 흰색 배경
+   - backdrop-filter: 블러 효과로 글래스모피즘 구현
+   - box-shadow: 부드러운 그림자 효과
+   - color: 반투명한 흰색 텍스트
+   - border-radius: 모서리 둥글게
+   - transition: 모든 변화에 0.3초 애니메이션 적용
+*/
+.theme-btn {
+    /* 크기 및 여백 */
+    padding: 8px 16px;
+    font-size: 14px;
+    
+    /* 글래스모피즘 효과 */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* 텍스트 스타일 */
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 700;
+    
+    /* 기타 스타일 */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+.theme-btn:hover {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 다크 모드 버튼 스타일
+   - color: 연한 노란색으로 텍스트 색상 변경
+   - box-shadow: 노란색 계열의 부드러운 그림자
+*/
+.theme-dark .theme-btn {
+    color: #fff894;
+    box-shadow: 0 4px 16px 0 rgba(255, 255, 0, 0.1);
+}
+
+/* 다크 모드 공지사항 컨테이너
+   - box-shadow: 노란색 계열의 부드러운 그림자로 다크모드 강조
+*/
+.theme-dark .notice-container {
+    box-shadow: 0 4px 16px 0 rgba(255, 255, 0, 0.1);
+}
+
+.theme-dark .timer,
+.theme-dark .period-type {
+    text-shadow: 2px 2px 2px var(--text-shadow-color);
+}
+
+
+/* 배경 이미지 경로는 HTML에서 직접 스타일로 지정하도록 수정됨 */
+.background.default {
+    opacity: 1;
+}
+
+.background.dark {
+    opacity: 0;
+}

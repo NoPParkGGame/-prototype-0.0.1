@@ -5,22 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HUFS 종강시계</title>
-
-    <!-- 스타일시트 연결 -->
-    <link rel="stylesheet" href="../static/css/main.css">
+    
+    <!-- CSS 파일 연결 (상대 경로) -->
+    <link rel="stylesheet" href="static/css/main.css">
     
     <!-- Google Fonts: Do Hyeon, Noto Sans KR 폰트 로드 -->
     <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
     
-    <!-- JavaScript 파일 연결 (defer 속성으로 HTML 파싱 후 실행) -->
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <!-- JavaScript (상대 경로) -->
+    <script src="static/js/script.js" defer></script>
 </head>
 
 <body class="theme-default">
     <!-- 배경 이미지 전환을 위한 컨테이너 -->
     <div class="background-container">
-        <div class="background default"></div>
-        <div class="background dark"></div>
+        <div class="background default" style="background-image: url(static/images/background_picture.jpg)"></div>
+        <div class="background dark" style="background-image: url(static/images/night_background.jpg)"></div>
     </div>
 
     <!-- 테마 전환 버튼 (우측 상단) -->
@@ -34,20 +34,20 @@
     <p id="currentTime">{{ current_time }}</p>
 
     <!-- 메인 컨테이너 - 종강까지 남은 시간 표시 -->
-    <div class="container">
-        <p class="period-type">{{ period_type }}</p>
-        <p class="timer">
-            {{ days }}일 {{ hours }}시간 {{ minutes }}분 {{ seconds }}초
-        </p>
-    </div>
-
+    
+    <span class="period-type">{{ period_type }}</span>
+    <span class="timer">
+        {{ days }}일 {{ hours }}시간 {{ minutes }}분 {{ seconds }}초
+    </span>
+    
     <!-- 공지사항 섹션 (좌측 하단 고정) -->
     <div class="notice-container">
         <!-- 공지사항 헤더: 제목, 업데이트 시간, 새로고침 버튼 -->
         <div class="notice-header">
             <h2 class="notice-title">HUFS 공지사항</h2>
             <span class="last-update">{{ last_update }}</span>
-            <button class="refresh-btn" onclick="refreshNotices()">새로고침</button>
+            <!-- onclick 속성 추가 -->
+            <button class="refresh-btn">새로고침</button>
         </div>
         <!-- 공지사항 테이블: 날짜와 제목 표시 -->
         <table class="notice-table">
@@ -66,7 +66,20 @@
         </table>
     </div>
 
-    <!-- JavaScript 파일 연결 (body 끝에서 로드) -->
-    <script src="../static/script.js"></script>
+    <!-- 종정시 버튼 (우측 하단) -->
+    <div>
+        <button class="info_tab_button" type="button" onclick="window.open('http://wis.hufs.ac.kr/src08/jsp/index.jsp', '_blank')">
+            종정시    
+        </button>
+        <button class="homepage_button" type="button" onclick="window.open('https://www.hufs.ac.kr' , '_blank')">
+            홈페이지
+        </button>
+        <button class="eclass_button" type="button" onclick="window.open('https://eclass.hufs.ac.kr/' , '_blank')">
+            이클래스
+        </button>
+        <button class="library_button" type="button" onclick="window.open('https://library.hufs.ac.kr/' , '_blank')">
+            도서관
+        </button>
+    </div>
 </body>
 </html>

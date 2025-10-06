@@ -1,22 +1,28 @@
 /* 타이머 관련 스타일 */
+
 .timer {
+    position: fixed;  /* 또는 absolute, relative */
+    bottom: 40px;      /* 상단에서의 거리 */
+    right: 40px;    /* 우측에서의 거리 */
     font-weight: 900;
-    font-size: 1.75em;
-    margin: 20px 0;
+    font-size: 3.25em;
     color: rgba(255, 255, 255, 0.9);  /* 흰색으로 변경 */
     font-family: "Noto Sans KR", sans-serif;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
-    text-align: center;  /* 가운데 정렬 추가 */
-    width: 100%;  /* 전체 너비 사용 */
 }
 
+/* 종강까지... */
 .period-type {
+    position: fixed;
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 800;
-    font-size: 2.24em;
+    font-weight: 900;
+    font-size: 3.25em;
     color: rgba(255, 255, 255, 0.9);  /* 흰색으로 변경 */
-    margin-bottom: 10px;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.1);
-    text-align: center;  /* 가운데 정렬 추가 */
-    width: 100%;  /* 전체 너비 사용 */
+    right: 40px;
+    bottom: 120px;
+}
+
+.period-type, .timer {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }

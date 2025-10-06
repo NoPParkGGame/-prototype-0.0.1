@@ -1,8 +1,10 @@
 /* 모든 스타일시트 import */
-@import 'themes.css';
-@import 'layout.css';
-@import 'components/timer.css';
+
 @import 'components/current-time.css';
-@import 'components/notice-board.css';  /* 공지사항 스타일 추가 */
+@import 'components/notice-board.css';
+@import 'components/timer.css';
+@import 'themes/layout.css';
+@import 'themes/themes.css';
+@import 'themes/transitions.css';
 @import 'responsive.css';
-@import 'transitions.css';  /* 전환 효과 추가 */
+@import 'components/meal.css';

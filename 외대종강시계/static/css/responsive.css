@@ -52,7 +52,7 @@
    - 적절한 중간 크기 유지
    - 여백 조정
 */
-@media screen and (min-width: 768px) and (max-width: 1199px) {
+@media screen and (min-width: 768px) and (max-width: 1199.99px) {
     .notice-container {
         width: 420px;
         left: 30px;
